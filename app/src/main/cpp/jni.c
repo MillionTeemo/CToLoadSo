@@ -8,6 +8,9 @@
 
 int registerNativeFunction(JavaVM *vm, JNIEnv *env);
 
+//crash
+int registerNativeCrashHandleFunctions(JavaVM *vm, JNIEnv *env);
+
 // allow the native library to perform any necessary initialization before the library's native methods can be called from Java code.
 // vm parameter is a pointer to the JavaVM instance that the native library is being loaded into,
 // reserved parameter is a pointer to a block of memory reserved for future use.
@@ -20,6 +23,9 @@ JNIEXPORT  jint JNICALL JNI_OnLoad(JavaVM *vm, void *reserved) {
     JNIEnv *env =0;
     if ((*vm)->GetEnv(vm, (void **) &env, JNI_VERSION_1_6) != JNI_OK) {
         return JNI_ON_LOAD_RESULT_ERR;
+    }
+    if (registerNativeCrashHandleFunctions(vm, env) != JNI_TRUE) {
+        return  JNI_ON_LOAD_RESULT_ERR;
     }
     if (registerNativeFunction(vm, env) != JNI_TRUE) {
         return  JNI_ON_LOAD_RESULT_ERR;

@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.zltech.ctoloadso.databinding.ActivityMainBinding;
+import com.zltech.ctoloadso.log.FileLog;
+
+import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         // Example of a call to a native method
         TextView tv = binding.sampleText;
         tv.setText(CApis.getInstance().stringFromJNI("你好 Hellow  wordl! ".getBytes()));
+
+        FileLog.i("你好 Hellow  wordl!");
     }
 
     /**

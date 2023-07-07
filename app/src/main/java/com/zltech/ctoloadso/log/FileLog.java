@@ -26,7 +26,7 @@ public class FileLog implements FileLogObserver.IFileListener{
     private boolean initied;
     private FileLogObserver fileLogObserver;
     private int MaxSize = 150; //aclog 日志总值 150M
-    private final static String tag = "ZDAN_App";
+    private final static String tag = "FileLog";
     private String[] Aclogs = {"logcat_0.log","logcat_1.log","logcat_2.log"};
 
     private static volatile FileLog Instance = null;
@@ -71,7 +71,7 @@ public class FileLog implements FileLogObserver.IFileListener{
             if (sdCard == null) {
                 return;
             }
-            File_aclogs = new File(sdCard.getParent() + "/zdan/aclogs");
+            File_aclogs = new File(sdCard.getParent() + "/ctoloadso/aclogs");
             File_aclogs.mkdirs();
             String print ="FileLog "+File_aclogs.getPath()+" aclogs  size ="+File_aclogs.length();
             System.out.println(print);

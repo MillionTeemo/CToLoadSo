@@ -11,6 +11,7 @@ project("ctoloadso")
 
 add_library(ctoloadso SHARED
         jni.c
+        crashhandle/CaptureCrash.cpp
         utils/ctutils.cpp
         )
 
